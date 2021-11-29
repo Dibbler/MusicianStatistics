@@ -49,8 +49,8 @@ while (running)
             continue;
         }
 
-        Console.WriteLine();
-        Console.WriteLine();
+        Console.WriteLine("\n");
+        Console.WriteLine("\n");
         //Calculate statistics based on the returned results
         Console.WriteLine($"Average number of words in a track: {artistInfo.TrackStats.AverageLength:0.##}");
         Console.WriteLine($"Maximum number of words in a track: {artistInfo.TrackStats.MaxLength}");
