@@ -1,0 +1,64 @@
+﻿@using MusicianStatisticsCore.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model ArtistInfo
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Musician Statistics</h1>
+    <p>Enter an artist's name to begin.</p>
+    @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.Name)
+        <button type="submit">Submit</button>
+    }
+    <hr/>
+    <i>@Html.ValidationSummary()</i>
+    @if (Model?.TrackStats.Tracks.Count() > 0)
+    {
+        <p>Word count statistics for <i><b>@Model.Name</b></i></p>
+        <p>Recordings found: <b>@Model.Recordings.Count()</b></p>
+        <p>Lyrics found: <b>@Model.TrackStats.Tracks.Count()</b></p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TrackStats.AverageLength)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TrackStats.MaxLength)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TrackStats.MinLength)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TrackStats.Variance)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TrackStats.StandardDeviation)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => m.TrackStats.AverageLength)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.TrackStats.MaxLength)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.TrackStats.MinLength)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.TrackStats.Variance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.TrackStats.StandardDeviation)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+
+</div>
